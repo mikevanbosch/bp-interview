@@ -14,6 +14,7 @@
   * The backend API is deployed using serverless for ease of use.
   * The backend database uses Dynamodb (deployed with cdk). I opted for a single-table design due to the limited requirements of this project.
 * For the frontend, I opted to use React. I don't currently do any frontend development; however, I sometimes play with react with hobby projects.
+  * The frontend is deployed using the aws-cdk to s3 + cloudfront.
 
 ## How would I make this production ready?
 * How would ensure the application is highly available and performs well?
