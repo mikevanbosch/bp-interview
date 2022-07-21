@@ -33,7 +33,7 @@
 * Wish-List
   * I would add additional environments for the cdk (dev,stg,prod)
   * I would add additional subdomains (dev,stg) and deploy to them respectively (secure dev/stg under a vpn)
-  * I would store user responses and setup sort keys in dynamo to allow for multiple data types in my single-table design
+  * I would store user responses and setup sort keys + GSI's in dynamo to allow for multiple data types in my single-table design
   * I would add tests for the frontend + add more components given more time
   * Possibly refactor the service layer for the post endpoint (Probably can be cleaner)
 * Linkedin: https://www.linkedin.com/in/michael-v-3066a5a6/
