@@ -401,4 +401,3 @@ dist
 coverage
 infra/cdk.out
 infra/.cdk.staging
-infra/bin
