@@ -1,0 +1,53 @@
+service: blueprint-health
+frameworkVersion: '3'
+
+custom: ${file(./serverless/${self:provider.stage}.yml)} #environment specific configuration
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-plugin-optimize
+  - serverless-offline
+  - serverless-domain-manager
+
+provider:
+  name: aws
+  tracing:
+    apiGateway: true
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  region: ${self:custom.region, 'us-east-1'}
+  environment: ${self:custom.environment}
+  tags: ${self:custom.tags}
+  logRetentionInDays: 14
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:BatchGetItem
+        - dynamodb:Scan
+      Resource:
+        - arn:aws:dynamodb:us-east-1:656607464701:table/blueprint-dev
+
+package:
+  patterns:
+    - '!.gitignore'
+    - '!README.md'
+    - '!serverless.yml'
+    - '!nest-cli.json'
+    - '!.prettierrc'
+    - './config/**'
+  excludeDevDependencies: true
+  individually: true
+
+functions:
+  main:
+    handler: src/main.handler
+    description: Blueprint-Health interview API
+    events:
+      - http:
+          method: any
+          path: /{proxy+}
+          cors: true
+    environment:
+      STAGE: ${opt:stage, 'dev'}
+      NODE_ENV: ${opt:stage, 'dev'}
+      NODE_CONFIG_DIR: ./config

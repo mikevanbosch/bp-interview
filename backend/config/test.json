@@ -1,0 +1,4 @@
+{
+  "blueprint-table": "blueprint-test",
+  "dynamo-endpoint": "http://localhost:4566"
+}

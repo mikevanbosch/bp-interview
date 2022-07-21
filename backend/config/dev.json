@@ -1,0 +1,4 @@
+{
+  "blueprint-table": "blueprint-dev",
+  "dynamo-endpoint": "https://dynamodb.us-east-1.amazonaws.com"
+}

@@ -1,0 +1,11 @@
+---
+region: us-east-1
+environment:
+  LOG_LEVEL: debug
+tags:
+  service: blueprint
+  env: dev
+customDomain:
+  domainName: 'api.appsdirect.click'
+  stage: ${self:provider.stage}
+  createRoute53Record: true
